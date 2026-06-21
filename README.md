@@ -153,6 +153,6 @@ Game saved!
 
 ## Author
 
-Maisie
+Margette
 
 High School Computer Science Project
