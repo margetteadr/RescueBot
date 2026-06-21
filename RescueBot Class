@@ -1,0 +1,73 @@
+import java.io.File;
+import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
+
+public class RescueBot {
+
+
+    public static void main(String[] args) {
+        System.out.println("=== RESCUE BOT ===\n");
+
+        int[][] map = {
+            {0, 0, 0, 0, 0},
+            {0, 1, 1, 1, 0},
+            {0, 0, 0, 1, 0},
+            {0, 1, 0, 0, 0},
+            {0, 0, 0, 1, 0}
+        };
+
+        int robotRow = 0;
+        int robotCol = 0;
+
+        int targetRow = 4;
+        int targetCol = 4;
+
+
+      
+        for (int i = 0; i < path.size(); i++) {
+            int[] pos = path.get(i);
+            robotRow = pos[0];
+            robotCol = pos[1];
+
+            printGrid(map, robotRow, robotCol, targetRow, targetCol);
+
+            }
+
+        printGrid(map, robotRow, robotCol, targetRow, targetCol);
+        if (robotRow == targetRow && robotCol == targetCol) {
+            System.out.println("\nRescue Bot reached the target!");
+        } else {
+            System.out.println("\nRescue Bot could not reach the target.");
+        }
+       
+boolean reachable = BFSPathFinder.canReach(map, robotRow, robotCol, targetRow, targetCol);
+        System.out.println("Target is reachable: " + reachable);
+
+         SaveManager.SaveScore(scoreManager.getScore());
+
+         System.out.println("=== GAME OVER ===");
+         System.out.println("Robot final position: (" + robotRow + ", " + robotCol + ")");
+         System.out.println("Target position: (" + targetRow + ", " + targetCol + ")");
+         System.out.println("Final score: " + scoreManager.getScore());
+         
+    }
+
+    public static void printGrid(int[][] map, int robotRow, int robotCol, int targetRow, int targetCol) {
+        for (int row = 0; row < map.length; row++) {
+            for (int col = 0; col < map[row].length; col++) {
+                if (row == robotRow && col == robotCol) {
+                    System.out.print("R ");
+                } else if (row == targetRow && col == targetCol) {
+                    System.out.print("T ");
+                } else if (map[row][col] == 1) {
+                    System.out.print("# ");
+                } else {
+                    System.out.print(". ");
+                }
+            }
+            System.out.println();
+        }
+    }
